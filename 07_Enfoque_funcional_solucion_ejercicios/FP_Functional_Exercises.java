@@ -31,6 +31,12 @@ public class FP_Functional_Exercises{
 		System.out.print("\t" + course + ", ");
 	}
 
+	private static void printStringLong(String course){
+		int longitud;
+		longitud = course.length();
+		System.out.print("\t" + "[" + course + " = " + longitud + "], " );
+	}
+
 	private static boolean isEven(String course){
 		return (course == "Spring" );
 	}
@@ -51,27 +57,31 @@ public class FP_Functional_Exercises{
 	}
 
 	private static void printString1(List<String> courses){
-
-		for (String course : courses) {
-			System.out.print("\t" + course + ", ");	
-		}
+		// for (String course : courses) {
+		// 	System.out.print("\t" + course + ", ");	
+		// }
+		// System.out.println("");
+		courses.stream()
+				.forEach(FP_Functional_Exercises::printString);
 		System.out.println("");
+
 	}
 
 	private static void printStringLongitud(List<String> courses){
-
-		for (String course : courses) {
-			int longitud;
-			longitud = course.length();					 //CONTADOR CON ESPACIOS
-			//longitud = course.replace(" ", "").length(); 	 //CONTADOR SIN ESPACIOS
-			System.out.print("\t" + "[" + course + " = " + longitud + "], " );	
-		}
+		// for (String course : courses) {
+		// 	int longitud;
+		// 	longitud = course.length();					 //CONTADOR CON ESPACIOS
+		// 	//longitud = course.replace(" ", "").length(); 	 //CONTADOR SIN ESPACIOS
+		// 	System.out.print("\t" + "[" + course + " = " + longitud + "], " );	
+		// }
+		// System.out.println("");
+		courses.stream()
+				.forEach(FP_Functional_Exercises::printStringLong);
 		System.out.println("");
 	}
 
 	private static void printFiltrados(List<String> courses){
 		courses.stream()
-				//.filter(FP_Functional_Exercises::isEven)
 				.filter(course -> course.startsWith("Spring"))
 				.forEach(FP_Functional_Exercises::printString);
 		System.out.println("");
@@ -79,7 +89,7 @@ public class FP_Functional_Exercises{
 
 	private static void printFiltrarCursosCuatro(List<String> courses){
 		courses.stream()
-				.filter(course -> course.length() <= 4)
+				.filter(course -> course.length() >= 4)
 				.forEach(FP_Functional_Exercises::printString);
 		System.out.println("");
 	}
